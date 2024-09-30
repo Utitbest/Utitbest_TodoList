@@ -266,7 +266,7 @@
     border-radius: 5px;
     /* accent-color: rgb(116, 84, 4); */
 }
-.history{
+.history1{
     height: 100%;
     width: 100%;
     display: flex;
@@ -312,8 +312,14 @@
     justify-content: center;
     font-family: sans-serif;
     color: white;
+    transition: 1s linear !important;
     font-size: 15px;
 }
 .ghyy{
     top:-30%;
+    transition: 1s linear !important;
+}
+.howwwo{
+    top: 0;
+    transition: 1s linear !important;
 }
