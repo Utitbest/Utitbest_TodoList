@@ -34,9 +34,17 @@ function clickingToAddTask(){
         }
         HappeningFast(Task_Name.value)
         let waking = Task_Name.value
-        localStorage.setItem('taskName', JSON.stringify(waking))
+        // localStorage.setItem('taskName', JSON.stringify(waking))
     });
 }
+function Collector(){
+    
+}
+function tosaveAgain(text){
+    JSON.parse(localStorage.getItem('taskName'))
+    
+}
+
 function HappeningFast(r){
     let blood = document.createElement('div');
         blood.className = 'sturbornss';
