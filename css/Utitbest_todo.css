@@ -291,7 +291,7 @@
 .know{
     position: absolute;
     /* top: -30; */
-    /* left: 34%; */
+    left: 34%;
     width: 200px;
     display: flex;
     border-radius: 10px;
@@ -313,4 +313,7 @@
     font-family: sans-serif;
     color: white;
     font-size: 15px;
+}
+.ghyy{
+    top:-30%;
 }
