@@ -1,0 +1,316 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.welcome{
+    height: 100vh;
+    width: 100%;
+    background-color: #0a0f0f;
+    display: flex;
+}
+.todoList{
+    height: 100%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.catapila{
+    height: 95%;
+    width: 600px;
+    border-radius: 10px;
+    background-color: #00264d;
+    position: relative;
+    box-shadow: 0 0 4px 0 white;
+    /* overflow: hidden; */
+
+}
+.catapila1{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    gap: 10px;
+    flex-direction: column;
+}
+.room1{
+    width: 95%;
+    height: 40%;
+    display: flex;
+    background: #004080;
+    border-radius: 10px;
+    box-shadow:inset 0 0 5px 0 #040404;
+}
+.room2{
+    width: 95%;
+    height: 60%;
+    display: flex;
+    background: #00264d;
+}
+.room11{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: .5rem;
+}
+.ansowhat1{
+    height: 100%;
+    width: 70%;
+    display: flex;
+}
+.ansowhat2{
+    height: 100%;
+    width: 30%;
+    display: flex;
+}
+.cashout{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.sexy2w{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-bottom: 34px ;
+    padding-top: 5px ;
+}
+.sexy2{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.sexy{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    color: white;
+    font-size: 20px;
+}
+.sexy1{
+    display: flex;
+    color: white;
+    font-family: sans-serif;
+    font-size: 17px;
+}
+.godes{
+    font-family: sans-serif;
+    color: white;
+}
+.complains{
+    height: 13px;
+    display: flex;
+    width: 100%;
+    border-radius: 15px;
+    border: solid 2px goldenrod;
+    padding: 2px;
+    align-items: center;
+}
+.complains1{
+    width: 80%;
+    height: 100%;
+    display: inline-block;
+    background: rgb(154, 113, 9);
+    border-radius: 10px;
+}
+.master{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.cycle{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background: #00264d;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    font-size:2.5em;
+    justify-content: center;
+}
+.characters1{
+    font-family: sans-serif;
+    color: goldenrod;
+}
+.characters2{
+    font-family: sans-serif;
+    color: white;
+}
+.characters3{
+    font-family: sans-serif;
+    color: white;
+}
+.adds{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.ieoiei1{
+    width: 100%;
+    display: flex;
+    height: 12%;
+    box-shadow: -1px 2px 5px 0 black
+}
+.ieoiei2{
+    width: 100%;
+    height: 88%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+.ieoiei2::-webkit-scrollbar{
+    width: 5px;
+    background-color: #00264d;
+}
+.ieoiei2::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #4e6985;
+}
+.favour{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.squad{
+    height: 47px;
+    width: 47px;
+    cursor: pointer;
+}
+.squad:active{
+    animation: sending 3s linear infinite alternate-reverse;
+}
+@keyframes sending {
+    100%{
+        transform: translate(-2px, 4px) rotate(360deg);
+    }
+}
+.Task_Name{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    color: white;
+    background: none;
+    outline: none;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+.Task_Name::placeholder{
+    font-size: 15px;
+    font-family: sans-serif;
+    color: white;
+}
+.masters{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.sturbornss{
+    width: 96%;
+    height: 70px;
+    border-radius:5px ;
+    box-shadow:inset -1px 2px 5px 0 rgb(4, 4, 4);
+}
+.newgirel{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.luv1{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.luv2{
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.luv3{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#hername{
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    /* accent-color: rgb(116, 84, 4); */
+}
+.history{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+    align-items: center;
+}
+.broht{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    gap: 10px;
+    justify-content: center;
+    color: gold;
+}
+.hei{
+    cursor: pointer;
+}
+.know{
+    position: absolute;
+    /* top: -30; */
+    /* left: 34%; */
+    width: 200px;
+    display: flex;
+    border-radius: 10px;
+    height: 100px;
+    background: #00264d;
+    align-items: center;
+    justify-content: center;
+}
+
+.seems{
+    height: 90%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #004080 ;
+    border-radius: 10px;
+    justify-content: center;
+    font-family: sans-serif;
+    color: white;
+    font-size: 15px;
+}
