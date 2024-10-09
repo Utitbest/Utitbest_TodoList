@@ -72,7 +72,7 @@ function HappeningFast(task, status){
 function contentEdit(){
     history1 = document.querySelector('.history1')
     history1.setAttribute('contenteditable', 'true')
-    history1.
+    history1
 }
 
 //  call this immediatly content load
