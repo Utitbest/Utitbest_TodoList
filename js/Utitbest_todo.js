@@ -33,19 +33,22 @@ function clickingToAddTask(){
             return;
         }
         HappeningFast(Task_Name.value)
-        let waking = Task_Name.value
-        // localStorage.setItem('taskName', JSON.stringify(waking))
+        Collector(Task_Name.value, false)
+        // let waking = Task_Name.value
     });
 }
-function Collector(){
-    
+function getTask(){
+    let task = localStorage.getItem('Utitbest_Todo');
+    return task ? JSON.parse(task) : [];
 }
-function tosaveAgain(text){
-    JSON.parse(localStorage.getItem('taskName'))
-    
+function Collector(txt, status){
+    task = getTask();
+    task.push({'task': txt, 'isComplete':status})
+    console.log(task)
+    localStorage.setItem('Utitbest_Todo', JSON.stringify(task))
 }
 
-function HappeningFast(r){
+function HappeningFast(task, status){
     let blood = document.createElement('div');
         blood.className = 'sturbornss';
         blood.innerHTML = `
@@ -54,17 +57,22 @@ function HappeningFast(r){
                     <input type="checkbox" name="" id="hername">
                 </div>
                 <div class="luv2">
-                    <p class="history1">${r}</p>
+                    <p class="history1">${task}</p>
                 </div>
                 <div class="luv3">
                     <div  class="broht">
-                        <i class="fa fa-edit hei"></i>
-                        <i class="fa fa-trash-alt hei"></i>
+                        <i class="fa fa-edit hei" title="Edit task" onclick="contentEdit()"></i>
+                        <i class="fa fa-trash-alt hei" title="Delete task"></i>
                     </div>
                 </div>
             </div>
         `;
-        masters.append(blood)
+        masters.insertAdjacentElement('afterbegin', (blood))
+}
+function contentEdit(){
+    history1 = document.querySelector('.history1')
+    history1.setAttribute('contenteditable', 'true')
+    history1.
 }
 
 //  call this immediatly content load
