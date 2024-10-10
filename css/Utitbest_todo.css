@@ -94,8 +94,32 @@
     align-items: center;
     font-family: sans-serif;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
 }
+.sexy4{
+    width: 100%;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+}
+.datem1{
+    color: white;
+    font-size: 34px;
+    margin: 0;
+    font-family: sans-serif;
+    padding: 0;
+    font-weight: 600;
+}
+.datem2{
+    color: white;
+    font-size: 12px;
+    margin: 0;
+    font-weight: 600;
+    padding-left: 4px;
+    font-family: sans-serif;
+}
+
 .sexy1{
     display: flex;
     color: white;
@@ -119,6 +143,7 @@
     width: 80%;
     height: 100%;
     display: inline-block;
+    transition: 1.5s linear;    
     background: rgb(154, 113, 9);
     border-radius: 10px;
 }
@@ -279,17 +304,35 @@
     width: 100%;
     display: flex;
     align-items: center;
-    font-size: 2em;
     gap: 10px;
     justify-content: center;
+}
+.resson1{
+    display: flex;
     color: gold;
+    z-index: 3;
+    height: 70%;
+    width: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+.resson2{
+    display: flex;
+    color: gold;
+    z-index: 3;
+    height: 70%;
+    width: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 .hei{
-    cursor: pointer;
+    z-index: 1;
+    font-size: 2em;
 }
 .know{
     position: absolute;
-    /* top: -30; */
     left: 34%;
     width: 200px;
     display: flex;
@@ -321,4 +364,7 @@
 .howwwo{
     top: 0;
     transition: 1s linear !important;
+}
+@media only screen and (max-width:615px) {
+    
 }
