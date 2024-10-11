@@ -135,16 +135,16 @@
     display: flex;
     width: 100%;
     border-radius: 15px;
-    border: solid 2px goldenrod;
+    border: solid 1px gold;
     padding: 2px;
     align-items: center;
 }
 .complains1{
-    width: 80%;
+    width: 0;
     height: 100%;
     display: inline-block;
-    transition: 1.5s linear;    
-    background: rgb(154, 113, 9);
+    transition: 1s linear;    
+    background: gold;
     border-radius: 10px;
 }
 .master{
@@ -162,13 +162,13 @@
     background: #00264d;
     align-items: center;
     display: flex;
-    gap: 10px;
-    font-size:2.5em;
+    gap: 6px;
+    font-size:2.8em;
     justify-content: center;
 }
 .characters1{
     font-family: sans-serif;
-    color: goldenrod;
+    color: gold;
 }
 .characters2{
     font-family: sans-serif;
@@ -288,7 +288,7 @@
     height: 40px;
     width: 40px;
     border-radius: 5px;
-    /* accent-color: rgb(116, 84, 4); */
+    accent-color: gold;
 }
 .history1{
     height: 100%;
@@ -340,9 +340,9 @@
     height: 100px;
     background: #00264d;
     align-items: center;
+    transition: 1s linear !important;
     justify-content: center;
 }
-
 .seems{
     height: 90%;
     width: 90%;
@@ -354,7 +354,6 @@
     justify-content: center;
     font-family: sans-serif;
     color: white;
-    transition: 1s linear !important;
     font-size: 15px;
 }
 .ghyy{

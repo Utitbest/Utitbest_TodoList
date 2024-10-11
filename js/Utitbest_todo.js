@@ -7,11 +7,13 @@ let datem1 = document.querySelector('.datem1')
 let datem2 = document.querySelector('.datem2')
 let characters3 = document.querySelector('.characters3')
 let characters1 = document.querySelector('.characters1')
+let seems = document.querySelector('.seems')
+let complains1 = document.querySelector('.complains1')
 
 let MyBoolen = false;
 let checking = false;
 let indexIn;
-
+let objectInStorage = 0;
 
 function clock(){
     let dte = new Date()
@@ -34,14 +36,11 @@ function clock(){
     datem2.innerHTML = daysByname[Day]+ ' ' + tDate + ' ' + monthname[mnt]+ ', ' + yrs;
     datem1.innerHTML = hrs +':'+min +':'+sec
 } setInterval(clock, 500);
-
 function creator(){
     let you = document.createElement('div');
         you.className = 'know ghyy';
         you.innerHTML = `
-            <div class="seems">
-                Enter task..... Tasks should not be empty.
-            </div>
+            <div class="seems"></div>
         `;
         catapila.append(you)
         clickingToAddTask()
@@ -53,7 +52,9 @@ function clickingToAddTask(){
     botton.addEventListener('click', function(){
         Task_Name = document.querySelector('.Task_Name');
         know = document.querySelector('.know')
+        seems = document.querySelector('.seems')
         if(Task_Name.value == ''){
+            seems.innerHTML = 'Enter task must not be empty'
             know.classList.add('howwwo')
             Task_Name.focus()
             setTimeout(() =>{
@@ -73,7 +74,9 @@ function Collector(txt, status){
     task = getTask();
     task.push({'task': txt, 'isComplete':status})
     localStorage.setItem('Utitbest_Todo', JSON.stringify(task));
-    characters3.innerHTML = task.length
+    characters3.innerHTML = task.length;
+    var floating = (ReturningChecks() / task.length) * 100;
+    complains1.style.width = floating + '%';
 }
 Lamba = () =>{
     indexIn = getTask()
@@ -81,15 +84,24 @@ Lamba = () =>{
 }
 Lamba()
 function HappeningFast(task, status){
+    let checked;
+    let style;
     let blood = document.createElement('div');
         blood.className = 'sturbornss';
+        if(status){
+            checked = 'checked';
+            style = 'style="text-decoration:line-through; color:gray;"';
+        }else{
+            checked = '';
+            style = '';
+        }
         blood.innerHTML = `
             <div class="newgirel">
                 <div class="luv1">
-                    <input type="checkbox" onchange="checkBox(event)" name="" id="hername">
+                    <input type="checkbox" ${checked} onchange="checkBox(event)" name="" id="hername">
                 </div>
                 <div class="luv2">
-                    <p class="history1">${task}</p>
+                    <p class="history1" ${style} title="${task}">${task}</p>
                 </div>
                 <div class="luv3">
                     <div  class="broht">
@@ -109,10 +121,26 @@ function contentEdit(e){
     MyBoolen ?  EditingBtn(e) : SaveBtn(e)
 }
 function EditingBtn(event){
+    var parent2value;
+    var e;
     let parent1 = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.resson1');
     let parent2 = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.history1');
         parent1.innerHTML = '<i class="fa fa-edit hei" title="Edit task"></i>';
         parent2.setAttribute('contenteditable', 'false')
+        if(parent2.innerHTML == ''){
+             parent2.innerHTML = parent2.title;
+            alert(parent2.title);
+            return
+        }
+        parent2value = parent2.innerHTML;
+        e = parent2.title;
+        let fromStorage = getTask();
+        fromStorage.filter((task, id) =>{
+            if(task.task === e){
+                fromStorage[id].task = parent2value;
+                localStorage.setItem('Utitbest_Todo', JSON.stringify(fromStorage))
+            }
+        });
         MyBoolen = false;
 }
 function SaveBtn(event){
@@ -124,23 +152,51 @@ function SaveBtn(event){
         MyBoolen = true;
 }
 function checkBox(event){
+    var pTagtext;
+    var StorageIne;
+    var checkman;
     let Input = event.target.parentNode.parentNode.parentNode.querySelector('.history1')
     let Inputcheck = event.target.parentNode.parentNode.parentNode.querySelector('#hername')
-    if(Inputcheck.checked == true){
-        Input.style.textDecoration = 'line-through';
-        Input.style.color = 'gray';
-        characters1.innerHTML =+ +1; 
-    }else{
-        Input.style.textDecoration = 'none';
-        Input.style.color = 'white';
-    }
-    
-    // console.log(Input)
+    StorageIne = getTask();
+    pTagtext = Input.innerHTML;
+    StorageIne.filter((boolens, id) =>{
+        if(boolens.task === pTagtext){
+            StorageIne[id].isComplete = Inputcheck.checked;
+            localStorage.setItem('Utitbest_Todo', JSON.stringify(StorageIne));
+            characters1.innerHTML = ReturningChecks()
+            var floating = (ReturningChecks() / StorageIne.length) * 100;
+            complains1.style.width = floating + '%';
+            if(StorageIne[id].isComplete == true){
+                Input.style.textDecoration = 'line-through';
+                Input.style.color = 'gray';
+            }else{
+                Input.style.textDecoration = 'none';
+                Input.style.color = 'white';
+            }
+        }
+    })
 }
+function ReturningChecks(){
+    var onlytrue = getTask()
+    return onlytrue.filter(tsk => tsk.isComplete === true).length;
+}
+function WidthofProgress(){
+    var Prog = getTask();
+    var josine = (ReturningChecks() / Prog.length) * 100;
+        complains1.style.width = josine + '%';
+}
+characters1.innerHTML = ReturningChecks()
+WidthofProgress()
 function DeletingTag(event){
-    // let resson2 = document.querySelectorAll('.resson2')
-    // let toBeRemove = event.target.parentNode.parentNode.parentNode.parentNode.parentElement.parentNode;
-    // toBeRemove.remove()
+    let checkingman;
+    let Ptagelements = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.history1');
+        checkingman = Ptagelements.innerHTML;
+    let africa = getTask();
+        africa.filter((del, pi) =>{
+            if(del.task !== checkingman){
+                localStorage.setItem('Utitbest_Todo', JSON.stringify(africa))
+            }
+        })
 }
 
 function TaskFromStorage(){
