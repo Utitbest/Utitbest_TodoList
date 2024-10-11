@@ -189,14 +189,14 @@ characters1.innerHTML = ReturningChecks()
 WidthofProgress()
 function DeletingTag(event){
     let checkingman;
-    let Ptagelements = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.history1');
-        checkingman = Ptagelements.innerHTML;
+    let Ptagelements = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.sturbornss');
+    console.log(Ptagelements)
+    let Ptagelementss = Ptagelements.querySelector('.history1'); 
+        checkingman = Ptagelementss.innerHTML;
     let africa = getTask();
-        africa.filter((del, pi) =>{
-            if(del.task !== checkingman){
-                localStorage.setItem('Utitbest_Todo', JSON.stringify(africa))
-            }
-        })
+        let flower = africa.filter(del => del.task !== checkingman);
+        localStorage.setItem('Utitbest_Todo', JSON.stringify(flower));
+        Ptagelements.remove();
 }
 
 function TaskFromStorage(){
