@@ -27,7 +27,7 @@ function clock(){
     let seconds = dte.getSeconds();
     let Day = dte.getDay();
     let monthname = ['January', 'feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    let daysByname = ['Sunday', 'Monday', 'Tuesday', 'Wednessday', 'Thursday', 'Friday']
+    let daysByname = ['Sunday', 'Monday', 'Tuesday', 'Wednessday', 'Thursday', 'Friday','Saturday']
     let min = (minute >= 10)? minute : '0' + minute;
     let sec = (seconds >= 10)? seconds : '0' + seconds;
     if(hrs >= 12){
@@ -141,8 +141,14 @@ function EditingBtn(event){
     let parent2 = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.history1');
         parent1.innerHTML = '<i class="fa fa-edit hei" title="Edit task"></i>';
         parent2.setAttribute('contenteditable', 'false')
+    //     let wele = getTask()
+    //     let weel = wele.filter(dk => dk.task == parent2.innerHTML);
+    //    if(weel.length == 1){
+    //         parent2.innerHTML = parent2.title;
+    //         return
+    //    }
         if(parent2.innerHTML == ''){
-             parent2.innerHTML = parent2.title;
+            parent2.innerHTML = parent2.title;
             alert(parent2.title);
             return
         }
@@ -155,7 +161,7 @@ function EditingBtn(event){
                 localStorage.setItem('Utitbest_Todo', JSON.stringify(fromStorage))
             }
         });
-        MyBoolen = false;
+            MyBoolen = false;
 }
 function SaveBtn(event){
     let parent1 = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.resson1');
