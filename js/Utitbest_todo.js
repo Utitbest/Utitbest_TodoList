@@ -8,7 +8,9 @@ let datem2 = document.querySelector('.datem2')
 let characters3 = document.querySelector('.characters3')
 let characters1 = document.querySelector('.characters1')
 let seems = document.querySelector('.seems')
+let botton = document.querySelector('.squad')
 let complains1 = document.querySelector('.complains1')
+let history1 = document.querySelector('.history1')
 
 let MyBoolen = false;
 let checking = false;
@@ -48,7 +50,6 @@ function creator(){
 creator()
 
 function clickingToAddTask(){
-    let botton = document.querySelector('.squad')
     botton.addEventListener('click', function(){
         Task_Name = document.querySelector('.Task_Name');
         know = document.querySelector('.know')
@@ -64,6 +65,7 @@ function clickingToAddTask(){
         }
         HappeningFast(Task_Name.value)
         Collector(Task_Name.value, false)
+        Task_Name.value = '';
     });
 }
 function getTask(){
@@ -180,32 +182,38 @@ function ReturningChecks(){
     var onlytrue = getTask()
     return onlytrue.filter(tsk => tsk.isComplete === true).length;
 }
+function DeletingTag(event){
+    history1 = document.querySelector('.history1')
+    let smith = event.target.closest('.sturbornss')
+    let checkingman;
+    let Ptagelements = smith.querySelector('.history1');
+        checkingman = Ptagelements.title;
+        console.log(checkingman)
+    let africa = getTask();
+        let flower = africa.filter(del => del.task !== checkingman);
+        localStorage.setItem('Utitbest_Todo', JSON.stringify(flower));
+        smith.remove();
+}
 function WidthofProgress(){
     var Prog = getTask();
     var josine = (ReturningChecks() / Prog.length) * 100;
         complains1.style.width = josine + '%';
 }
-characters1.innerHTML = ReturningChecks()
-WidthofProgress()
-function DeletingTag(event){
-    let checkingman;
-    let Ptagelements = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.sturbornss');
-    console.log(Ptagelements)
-    let Ptagelementss = Ptagelements.querySelector('.history1'); 
-        checkingman = Ptagelementss.innerHTML;
-    let africa = getTask();
-        let flower = africa.filter(del => del.task !== checkingman);
-        localStorage.setItem('Utitbest_Todo', JSON.stringify(flower));
-        Ptagelements.remove();
-}
-
 function TaskFromStorage(){
     let task = getTask();
     task.map((show, nite) =>{
         HappeningFast(show.task, show.isComplete)
     })
 }
+WidthofProgress()
 TaskFromStorage()
+characters1.innerHTML = ReturningChecks()
+window.addEventListener('keyup', function(event){
+    if(event.keyCode == 13){
+        botton.click()
+    }
+})
+
 //  call this immediatly content load
 // window.addEventListener('DOMContentLoaded', HappeningFast())
 
