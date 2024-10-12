@@ -52,8 +52,9 @@ creator()
 function clickingToAddTask(){
     botton.addEventListener('click', function(){
         Task_Name = document.querySelector('.Task_Name');
-        know = document.querySelector('.know')
-        seems = document.querySelector('.seems')
+        know = document.querySelector('.know');
+        seems = document.querySelector('.seems');
+        
         if(Task_Name.value == ''){
             seems.innerHTML = 'Enter task must not be empty'
             know.classList.add('howwwo')
@@ -62,6 +63,17 @@ function clickingToAddTask(){
                 know.classList.remove('howwwo')
             }, 3500)
             return;
+        }
+        let course = getTask()
+        let repeat = course.filter(tsk => tsk.task == Task_Name.value);
+        if(repeat.length != 0){
+            seems.innerHTML = 'Task name "' + Task_Name.value + '" already exist'
+            know.classList.add('howwwo')
+            Task_Name.focus()
+            setTimeout(() =>{
+                know.classList.remove('howwwo')
+            }, 3500)
+            return
         }
         HappeningFast(Task_Name.value)
         Collector(Task_Name.value, false)
@@ -188,7 +200,6 @@ function DeletingTag(event){
     let checkingman;
     let Ptagelements = smith.querySelector('.history1');
         checkingman = Ptagelements.title;
-        console.log(checkingman)
     let africa = getTask();
         let flower = africa.filter(del => del.task !== checkingman);
         localStorage.setItem('Utitbest_Todo', JSON.stringify(flower));
