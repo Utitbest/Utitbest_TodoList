@@ -11,11 +11,11 @@ let seems = document.querySelector('.seems')
 let botton = document.querySelector('.squad')
 let complains1 = document.querySelector('.complains1')
 let history1 = document.querySelector('.history1')
+let resson1 = document.querySelector('.resson1')
 
 let MyBoolen = false;
 let checking = false;
 let indexIn;
-let objectInStorage = 0;
 
 function clock(){
     let dte = new Date()
@@ -38,16 +38,13 @@ function clock(){
     datem2.innerHTML = daysByname[Day]+ ' ' + tDate + ' ' + monthname[mnt]+ ', ' + yrs;
     datem1.innerHTML = hrs +':'+min +':'+sec
 } setInterval(clock, 500);
-function creator(){
+
     let you = document.createElement('div');
         you.className = 'know ghyy';
         you.innerHTML = `
             <div class="seems"></div>
         `;
         catapila.append(you)
-        clickingToAddTask()
-}
-creator()
 
 function clickingToAddTask(){
     botton.addEventListener('click', function(){
@@ -57,6 +54,15 @@ function clickingToAddTask(){
         
         if(Task_Name.value == ''){
             seems.innerHTML = 'Enter task must not be empty'
+            know.classList.add('howwwo')
+            Task_Name.focus()
+            setTimeout(() =>{
+                know.classList.remove('howwwo')
+            }, 3500)
+            return;
+        }
+        if(Task_Name.value.search(/[^a-z0-9, .]/i) !== -1){
+            seems.innerHTML = 'No special characters allowed'
             know.classList.add('howwwo')
             Task_Name.focus()
             setTimeout(() =>{
@@ -75,11 +81,14 @@ function clickingToAddTask(){
             }, 3500)
             return
         }
-        HappeningFast(Task_Name.value)
-        Collector(Task_Name.value, false)
+        var dreams = Task_Name.value;
+        HappeningFast(dreams)
+        Collector(dreams, false)
         Task_Name.value = '';
     });
 }
+clickingToAddTask()
+
 function getTask(){
     let task = localStorage.getItem('Utitbest_Todo');
     return task ? JSON.parse(task) : [];
@@ -131,44 +140,69 @@ function HappeningFast(task, status){
         `;
         masters.insertAdjacentElement('afterbegin', (blood))
 }
-function contentEdit(e){
-    MyBoolen ?  EditingBtn(e) : SaveBtn(e)
+function contentEdit(event){
+    MyBoolen ?  EditingBtn(event) : SaveBtn(event)
 }
 function EditingBtn(event){
-    var parent2value;
-    var e;
-    let parent1 = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.resson1');
-    let parent2 = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.history1');
+        know = document.querySelector('.know');
+        seems = document.querySelector('.seems');
+    let freeful = event.target.closest('.sturbornss');
+    let parent1 = freeful.querySelector('.resson1');
+    let parent2 = freeful.querySelector('.history1')
+    let e;
+    let parent2value;
         parent1.innerHTML = '<i class="fa fa-edit hei" title="Edit task"></i>';
         parent2.setAttribute('contenteditable', 'false')
-    //     let wele = getTask()
-    //     let weel = wele.filter(dk => dk.task == parent2.innerHTML);
-    //    if(weel.length == 1){
-    //         parent2.innerHTML = parent2.title;
-    //         return
-    //    }
+        var wele = getTask()
+        var weel = wele.filter(dk => dk.task == parent2.innerHTML);
+        if(weel.length == 1){
+            parent2.innerHTML = parent2.title;
+            seems.innerHTML = 'Task with that name already existed'
+            know.classList.add('howwwo')
+            Task_Name.focus()
+            setTimeout(() =>{
+                know.classList.remove('howwwo')
+            }, 3500)
+        }
+
         if(parent2.innerHTML == ''){
             parent2.innerHTML = parent2.title;
-            alert(parent2.title);
-            return
+            seems.innerHTML = 'Cant leave it empty dear'
+            know.classList.add('howwwo')
+            Task_Name.focus()
+            setTimeout(() =>{
+                know.classList.remove('howwwo')
+            }, 3500)
         }
-        parent2value = parent2.innerHTML;
-        e = parent2.title;
+        if(parent2.innerHTML.search(/[^a-z0-9, .]/i) !== -1){
+            parent2.innerHTML = parent2.title;
+            seems.innerHTML = 'No special characters allowed'
+            know.classList.add('howwwo')
+            Task_Name.focus()
+            setTimeout(() =>{
+                know.classList.remove('howwwo')
+            }, 3500)
+        }
+
+        parent2value = parent2.innerHTML.replace('<div><br></div>', '');
+        e = parent2.title//.replace('<div><br></div>', '');
         let fromStorage = getTask();
         fromStorage.filter((task, id) =>{
             if(task.task === e){
                 fromStorage[id].task = parent2value;
+                parent2.title = fromStorage[id].task;
                 localStorage.setItem('Utitbest_Todo', JSON.stringify(fromStorage))
             }
         });
             MyBoolen = false;
 }
 function SaveBtn(event){
-    let parent1 = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.resson1');
-    let parent2 = event.target.parentNode.parentNode.parentElement.parentElement.parentNode.querySelector('.history1');
-        parent1.innerHTML = '<i class="fa-brands fa-telegram hei" title="Edit task"></i>';
-        parent2.setAttribute('contenteditable', 'true')
-        parent2.focus();
+    let parent1 = event.target.closest('.sturbornss');
+    let parent3 = parent1.querySelector('.history1');
+    let parent2 = parent1.querySelector('.resson1')
+        parent2.innerHTML = '<i class="fa-brands fa-telegram hei" title="Edit task"></i>';
+        parent3.setAttribute('contenteditable', 'true')
+        parent3.focus();
         MyBoolen = true;
 }
 function checkBox(event){
@@ -201,7 +235,6 @@ function ReturningChecks(){
     return onlytrue.filter(tsk => tsk.isComplete === true).length;
 }
 function DeletingTag(event){
-    history1 = document.querySelector('.history1')
     let smith = event.target.closest('.sturbornss')
     let checkingman;
     let Ptagelements = smith.querySelector('.history1');
@@ -209,6 +242,10 @@ function DeletingTag(event){
     let africa = getTask();
         let flower = africa.filter(del => del.task !== checkingman);
         localStorage.setItem('Utitbest_Todo', JSON.stringify(flower));
+        characters3.innerHTML = flower.length;
+        characters1.innerHTML = ReturningChecks()
+        var floating = (ReturningChecks() / flower.length) * 100;
+        complains1.style.width = floating + '%';
         smith.remove();
 }
 function WidthofProgress(){
